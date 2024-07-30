@@ -1,0 +1,149 @@
+# Collecting all the pertinent information on an assortment of satellites so as to 
+# centralise the information in a machine readable format that can be loaded in at runtime
+# 
+# -------------------------------------------------------------------------------------------
+# 
+# Data has the following structure:
+# 
+# Mission name: 
+#   Dataset: Earth Engine Dataset <string> 
+#   Type: Type of instrument (MSI, SAR, etc.) <string>
+#   Bands: Band names as they are in the dataset and what they correspond to <dictionary>
+#   Resolution: Resolution of the highest resolution band <float>
+#   Operative: Dates of satellite dataset availability [<string>, <string>] - L4 will complicate this due to its years of downtime
+#   Cloud Property: Property of the images used to asses the percentage cloud cover <string>
+#   Mask: Function name used to apply the cloud mask (and scaling as things stand) <string>
+#   Scale Multiply: Value to multiply the images by <float>
+#   Scale Add: Value by which to offest the images by <float>
+#
+# -------------------------------------------------------------------------------------------
+# 
+
+#--------------------------------------
+#         Sentinel Missions
+#--------------------------------------
+
+
+Sentinel 2:
+     Dataset: COPERNICUS/S2_SR_HARMONIZED
+     Type: MSI
+     Bands: {"Aerosols": "B1", #60m resolution, 442nm wavelength
+              "B": "B2", #10m, 492nm
+              "G": "B3", #10m, 560nm
+              "R": "B4", #10m, 665nm
+              "RE1": "B5", #20m, 704nm
+              "RE2": "B6", #20m, 740nm
+              "RE3": "B7", #20m, 780nm
+              "NIR": "B8", #10m, 835nm
+              "RE4": "B8A", #20m, 864nm
+              "WV": "B9", #60m, 945nm
+              "SWIR1": "B11", #20m, 1610nm
+              "SWIR2": "B12"} #20m, 2200nm
+     Resolution: 10
+     Operative: ['2017-03-28', Present]
+     Cloud Property: CLOUDY_PIXEL_PERCENTAGE
+     Mask: Sentinel2_CloudMask
+     Scale Multiply: 0.0001
+     Scale Add: 0
+
+Sentinel 1:
+     Dataset: COPERNICUS/S1_GRD
+     Type: SAR
+     Bands: {"HH": "HH", #10m pixel size
+              "HV": "HV", #10m pixel size
+              "VV": "VV", #10m pixel size
+              "VH": "VH", #10m pixel size
+              "angle": "IncidenceAngle"} #Approximate incidence angle from ellipsoid
+     Resolution: 10
+     Operative: ['2014-10-03', Present]
+     Cloud Property: None
+     Mask: None
+     Scale Multiply: 1
+     Scale Add: 0
+
+
+#--------------------------------------
+#         Landsat Missions
+#--------------------------------------
+
+Landsat 9:
+     Dataset: LANDSAT/LC09/C02/T1_L2
+     Type: MSI
+     Bands: {"Aerosols": "SR_B1", #30m resolution, 435-451nm wavelength
+              "B": "SR_B2", #30m, 452-512nm
+              "G": "SR_B3", #30m, 533-590nm
+              "R": "SR_B4", #30m, 636-673nm
+              "NIR": "SR_B5", #30m, 851-879nm
+              "SWIR1": "SR_B6", #30m, 1566-1651nm
+              "SWIR2": "SR_B7"} #30m, 2107-2294nm
+     Resolution: 30
+     Operative: ['2021-10-31', Present]
+     Cloud Property: CLOUD_COVER #Can also have CLOUD_COVER_LAND
+     Mask: Landsat_CloudMask
+     Scale Multiply: 2.75e-05
+     Scale Add: -0.2
+
+Landsat 8:
+     Dataset: LANDSAT/LC08/C02/T1_L2
+     Type: MSI
+     Bands: {"Aerosols": "SR_B1", #30m resolution, 435-451nm wavelength
+              "B": "SR_B2", #30m, 452-512nm
+              "G": "SR_B3", #30m, 533-590nm
+              "R": "SR_B4", #30m, 636-673nm
+              "NIR": "SR_B5", #30m, 851-879nm
+              "SWIR1": "SR_B6", #30m, 1566-1651nm
+              "SWIR2": "SR_B7"} #30m, 2107-2294nm
+     Resolution: 30
+     Operative: ['2013-03-18', Present]
+     Cloud Property: CLOUD_COVER #Can also have CLOUD_COVER_LAND
+     Mask: Landsat_CloudMask
+     Scale Multiply: 2.75e-05
+     Scale Add: -0.2
+
+Landsat 7:
+     Dataset: LANDSAT/LE07/C02/T1_L2
+     Type: MSI
+     Bands:  {"B": "SR_B1", #30m resolution, 450-520nm wavelength
+              "G": "SR_B2", #30m, 520-600nm
+              "R": "SR_B3", #30m, 630-690nm
+              "NIR": "SR_B4", #30m, 770-900nm
+              "SWIR1": "SR_B5", #30m, 1550-1750nm
+              "SWIR2": "SR_B7"} #30m, 2080-2350nm
+     Resolution: 30
+     Operative: ['1999-05-28','2022-08-15']
+     Cloud Property: CLOUD_COVER #Can also have CLOUD_COVER_LAND
+     Mask: Landsat_CloudMask
+     Scale Multiply: 2.75e-05
+     Scale Add: -0.2
+
+Landsat 5:
+     Dataset: 'LANDSAT/LT05/C02/T1_L2'
+     Type: MSI
+     Bands:  {"B": "SR_B1", #30m resolution, 450-520nm wavelength
+              "G": "SR_B2", #30m, 520-600nm
+              "R": "SR_B3", #30m, 630-690nm
+              "NIR": "SR_B4", #30m, 770-900nm
+              "SWIR1": "SR_B5", #30m, 1550-1750nm
+              "SWIR2": "SR_B7"} #30m, 2080-2350nm
+     Resolution: 30
+     Operative: ['1984-03-16','2012-05-05']
+     Cloud Property: CLOUD_COVER #Can also have CLOUD_COVER_LAND
+     Mask: Landsat_CloudMask
+     Scale Multiply: 2.75e-05
+     Scale Add: -0.2
+
+Landsat 4:
+     Dataset: 'LANDSAT/LT04/C02/T1_L2'
+     Type: MSI
+     Bands:  {"B": "SR_B1", #30m resolution, 450-520nm wavelength
+              "G": "SR_B2", #30m, 520-600nm
+              "R": "SR_B3", #30m, 630-690nm
+              "NIR": "SR_B4", #30m, 770-900nm
+              "SWIR1": "SR_B5", #30m, 1550-1750nm
+              "SWIR2": "SR_B7"} #30m, 2080-2350nm
+     Resolution: 30
+     Operative: ['1982-08-22','1993-06-24'] #Zero data from April 1984-May 1987, 93% of dataset is from May 1987 - December 1992
+     Cloud Property: CLOUD_COVER #Can also have CLOUD_COVER_LAND
+     Mask: Landsat_CloudMask
+     Scale Multiply: 2.75e-05
+     Scale Add: -0.2

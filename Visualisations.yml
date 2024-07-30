@@ -1,0 +1,212 @@
+# Creating a library of visualisations that can be used for image saving
+# Makes use of the palettes in Palettes.yml
+# 
+# -------------------------------------------------------------------------------------------
+# 
+# Data has the following structure:
+# 
+# Visualisation name: 
+#   vis_min: Minimum value of the visualisation <float>
+#   vis_max: Maximum value of the visualisation <float>
+#   palette: Name of the colour palette (from Palettes.yml) to use <string>
+#
+# N.B. palette[0] is the floor, s.t. vals < vis_min are coloured as palette[0], while
+#   palette[-1] is the ceiling, s.t. vals > vis_max are coloured as palette[-1]
+# -------------------------------------------------------------------------------------------
+ 
+
+# Missing NBR at present
+# SAR trial should/could also be included
+
+#--------------------------------------
+#          Three band defaults
+#--------------------------------------
+
+SAR_RGB_default:
+  vis_min: [-20,-20,0]
+  vis_max: [0,0,2]
+  palette: Empty
+
+
+RGB_default:
+  vis_min: 0
+  vis_max: 0.3
+  palette: Empty
+
+RedVegetation1_default:
+  vis_min: 0
+  vis_max: 0.3
+  palette: Empty
+
+RedVegetation2_default:
+  vis_min: 0
+  vis_max: 0.3
+  palette: Empty
+
+SWIRComposite1_default:
+  vis_min: 0
+  vis_max: 0.3
+  palette: Empty
+
+Agriculture_default:
+  vis_min: 0
+  vis_max: 0.3
+  palette: Empty
+
+SWIRComposite2_default:
+  vis_min: 0
+  vis_max: 0.3
+  palette: Empty
+
+Bathymetric1_default:
+  vis_min: 0
+  vis_max: 0.3
+  palette: Empty
+
+Bathymetric2_default:
+  vis_min: 0
+  vis_max: 0.3
+  palette: Empty
+
+Bathymetric3_default:
+  vis_min: 0
+  vis_max: 0.3
+  palette: Empty
+
+Bathymetric4_default:
+  vis_min: 0
+  vis_max: 0.3
+  palette: Empty
+
+Bathymetric5_default:
+  vis_min: 0
+  vis_max: 0.3
+  palette: Empty
+
+Bathymetric6_default:
+  vis_min: 0
+  vis_max: 0.3
+  palette: Empty
+
+Urban_default:
+  vis_min: 0
+  vis_max: 0.3
+  palette: Empty
+
+Neon_default:
+  vis_min: 0
+  vis_max: 1
+  palette: Empty
+
+
+#--------------------------------------
+#           Index defaults
+#--------------------------------------
+
+NDVI_default:
+  vis_min: -0.2
+  vis_max: 1
+  palette: NDVI_default
+
+GNDVI_default:
+  vis_min: -0.2
+  vis_max: 1
+  palette: NDVI_default
+
+GCI_default:
+  vis_min: -1
+  vis_max: 8
+  palette: NDVI_default
+
+RECI_default:
+  vis_min: -1.5
+  vis_max: 12
+  palette: RECI_default
+
+ARVI_default:
+  vis_min: -0.2
+  vis_max: 0.9
+  palette: NDVI_default
+
+VARI_default:
+  vis_min: -0.5
+  vis_max: 0.8
+  palette: NDVI_default
+
+NDRE_default:
+  vis_min: -0.2
+  vis_max: 1
+  palette: NDVI_default
+
+# Adapted from https://github.com/sentinel-hub/custom-scripts/blob/master/sentinel-2/evi/script.js
+EVI_default:
+  vis_min: -1.1
+  vis_max: 0.6
+  palette: EVI_default
+
+# Adapted from https://github.com/sentinel-hub/custom-scripts/blob/master/sentinel-2/savi/script.js
+SAVI_default:
+  vis_min: -1
+  vis_max: 1
+  palette: SAVI_default
+
+OSAVI_default:
+  vis_min: -1
+  vis_max: 1
+  palette: SAVI_default
+
+MSAVI_default:
+  vis_min: -1
+  vis_max: 1
+  palette: SAVI_default
+
+# Adapted from https://github.com/sentinel-hub/custom-scripts/blob/master/sentinel-2/ndmi_special/script.js
+NDMI_default:
+  vis_min: 0
+  vis_max: 0.4
+  palette: NDMI_default
+
+NDWI_default:
+ vis_min: -0.8
+ vis_max: 0.4
+ palette: NDWI_default
+
+NDSI_default:
+  vis_min: -0.6
+  vis_max: 0.8
+  palette: NDSI_default
+
+SIPI_default:
+  vis_min: 0.5
+  vis_max: 5
+  palette: SIPI_default
+
+ARI_default:
+  vis_min: -1
+  vis_max: 10
+  palette: NDVI_default
+
+MARI_default:
+  vis_min: -0.5
+  vis_max: 3
+  palette: NDVI_default
+
+BSI_default:
+  vis_min: -0.3
+  vis_max: 0.25
+  palette: BSI_default
+
+PSRI_default:
+  vis_min: -0.25
+  vis_max: 0.5
+  palette: PSRI_default
+
+OSI_default:
+  vis_min: -50
+  vis_max: 1
+  palette: Empty
+
+NDVI_RedGreen:
+  vis_min: -0.2
+  vis_max: 1
+  palette: NDVI_natural
